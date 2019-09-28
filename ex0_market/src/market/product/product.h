@@ -12,6 +12,22 @@
  */
 class Product {
 
+  public:
+
+	/*!
+	 * The constructor of product that takes it ID.
+	 *
+	 * @param id the ID
+	 */
+	Product(int id);
+
+	/*!
+	 * Gets the ID of the product.
+	 *
+	 * @return the ID
+	 */
+	const int getId() const;
+
   private:
 	/*!
 	 * The ID of the product.
@@ -25,6 +41,16 @@ class Product {
  * @author Márcio Duarte
  */
 class Conserve : public Product {
+
+  public:
+	/*!
+	 * Constructor of conserve that gets its ID, ideal temperature and shelf life in days.
+	 *
+	 * @param id the ID
+	 * @param idealTemp the ideal temperature
+	 * @param shelfLife the shelf life in days
+	 */
+	Conserve(int id, float idealTemp, int shelfLife);
 
   private:
 	/*!

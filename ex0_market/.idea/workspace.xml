@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="AEDAex0" targetName="AEDAex0" />
+      <config projectName="ex0_market" targetName="AEDAex0" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -11,7 +11,23 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef826ce4-d0af-4d28-b075-de54b8fd9b96" name="Default Changelist" comment="" />
+    <list default="true" id="ef826ce4-d0af-4d28-b075-de54b8fd9b96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/market/market.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/exception/market/business.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/market/market.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/exception/market/business.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/market.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/market.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/market.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/market.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/participant/participant.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/participant/participant.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/participant/participant.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/participant/participant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/product/marketable_product.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/product/marketable_product.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/product/marketable_product.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/product/marketable_product.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/product/product.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/product/product.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/market/product/product.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/market/product/product.h" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +37,28 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1RTKg5FJBwsma2tNvysjH3rPhWb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -64,10 +99,25 @@
       <option name="presentableId" value="Default" />
       <updated>1569685753147</updated>
       <workItem from="1569685755024" duration="9745000" />
+      <workItem from="1569704766773" duration="83000" />
+      <workItem from="1569704934132" duration="6393000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

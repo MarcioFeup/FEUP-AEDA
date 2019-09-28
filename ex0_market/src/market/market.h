@@ -9,7 +9,7 @@
 
 #include "participant/participant.h"
 #include "product/product.h"
-#include "../exception/market/market.h"
+#include "../exception/market/business.h"
 
 /*!
  * Manages all the products, providing access to a list of them.
@@ -18,11 +18,43 @@
  */
 class ProductManager {
 
+  public:
+
+	/*!
+	 * Destructor of the product manager.
+	 * Clears the entire vector.
+	 */
+	~ProductManager();
+
+	/*!
+	 * Adds a product to the list.
+	 *
+	 * @param product the product to add
+	 * @return true if the product was successfully added, false if it already exists
+	 */
+	bool addProduct(Product product);
+
+	/*!
+	 * Gets a product by its ID.
+	 *
+	 * @param productId the product's ID
+	 * @return the reference to the product
+	 */
+	const Product &getProduct(int productId) const;
+
   private:
 	/*!
 	 * The list of products.
 	 */
 	std::vector<Product*> products;
+
+	/*!
+	 * Verifies if a product exists by its ID.
+	 *
+	 * @param productId the id
+	 * @return true case it exists, false otherwise
+	 */
+	bool productExists(int productId) const;
 };
 
 /*!
@@ -48,7 +80,7 @@ class Market {
 	 * @param quantity the minimum quantity required
 	 * @return the participant
 	 */
-	Participant *lowestPrice(int productId, int quantity) const;
+	const Participant *lowestPrice(int productId, int quantity) const;
 
 	/*!
 	 * Defines new sale prices for all marketable products.

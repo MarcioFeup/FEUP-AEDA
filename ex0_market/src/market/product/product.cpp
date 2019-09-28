@@ -3,3 +3,11 @@
 //
 
 #include "product.h"
+
+const int Product::getId() const {
+	return id;
+}
+
+Product::Product(int id) : id(id) {}
+
+Conserve::Conserve(int id, float idealTemp, int shelfLife) : Product(id), idealTemp(idealTemp), shelfLife(shelfLife) {}
