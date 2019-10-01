@@ -54,6 +54,13 @@ class Participant {
 	bool hasProduct(int productId, int quantity) const;
 
 	/*!
+	 * Gets the ID of the participant.
+	 *
+	 * @return the ID
+	 */
+	const int getId() const;
+
+	/*!
 	 * Gets a product given its ID and quantity.
 	 * Should only be used after the verification of hasProduct(int, int). Otherwise, unexpected behavior is expected.
 	 *

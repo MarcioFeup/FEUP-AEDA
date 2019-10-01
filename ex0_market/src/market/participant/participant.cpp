@@ -29,3 +29,7 @@ const MarketableProduct &Participant::getProduct(int productId, int quantity) co
 
 	return associatedProducts[0]; // TODO: what to return?
 }
+
+const int Participant::getId() const {
+	return id;
+}

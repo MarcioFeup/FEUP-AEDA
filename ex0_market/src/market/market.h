@@ -46,7 +46,7 @@ class ProductManager {
 	/*!
 	 * The list of products.
 	 */
-	std::vector<Product*> products;
+	std::vector<Product *> products;
 
 	/*!
 	 * Verifies if a product exists by its ID.
@@ -55,6 +55,47 @@ class ProductManager {
 	 * @return true case it exists, false otherwise
 	 */
 	bool productExists(int productId) const;
+};
+
+/*!
+ * Manages the participants, providing access to a list of them.
+ *
+ * @author Márcio Duarte
+ */
+class ParticipantManager {
+
+  public:
+
+	/*!
+	 * Verifies if a participant with a given ID exists.
+	 *
+	 * @param id the ID
+	 * @return true if the participant exists, false otherwise
+	 */
+	bool hasParticipant(int id);
+
+	/*!
+	 * Gets a participant by its ID.
+	 * If the participant is not found, will return unexpected values, so one should use this function in pair with
+	 * "hasParticipant(int)".
+	 *
+	 * @param id the ID
+	 * @return the correspondent participant
+	 */
+	const Participant &getParticipant(int id);
+
+	/*!
+	 * Gets the vector of participants, immutable.
+	 *
+	 * @return the vector
+	 */
+	const std::vector<Participant> getParticipants() const;
+
+  private:
+	/*!
+	 * The list of participants.
+	 */
+	std::vector<Participant> participants;
 };
 
 /*!
@@ -87,16 +128,23 @@ class Market {
 	 */
 	void sale();
 
+	/*!
+	 * Gets the manager of participants, immutable.
+	 *
+	 * @return the manager of participants
+	 */
+	const ParticipantManager &getParticipantManager() const;
+
   private:
 	/**
-	 * The manager of products
+	 * The manager of products.
 	 */
 	ProductManager productManager;
 
 	/*!
-	 * The list of active participants.
+	 * The manager of participants.
 	 */
-	std::vector<Participant> participants;
+	ParticipantManager participantManager;
 
 	/*!
 	 * Reads a single participant from the ifstream.

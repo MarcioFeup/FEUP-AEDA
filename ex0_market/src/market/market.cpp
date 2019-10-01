@@ -46,6 +46,26 @@ bool ProductManager::productExists(int productId) const {
 	return false;
 }
 
+const Participant &ParticipantManager::getParticipant(int id) {
+	auto i = participants.begin();
+	for (i = participants.begin(); i != participants.end(); ++i)
+		if (i->getId() == id)
+			return *i;
+
+	return *i;
+}
+
+bool ParticipantManager::hasParticipant(int id) {
+	for (Participant &participant : participants)
+		if (participant.getId() == id)
+			return true;
+	return false;
+}
+
+const std::vector<Participant> ParticipantManager::getParticipants() const {
+	return std::vector<Participant>();
+}
+
 void Market::start(const string &fileName) {
 	ifstream in;
 	in.open(fileName);
@@ -54,7 +74,7 @@ void Market::start(const string &fileName) {
 		throw NonExistentFileException("File \"" + fileName + "\" does not exist.");
 
 	string line;
-	while(getline(in, line)) {
+	while (getline(in, line)) {
 		if (line == "cliente" || line == "fornecedor")
 			readParticipant(&in);
 		else if (line == "produto")
@@ -75,8 +95,19 @@ const Participant *Market::lowestPrice(int productId, int quantity) const {
 
 void Market::sale() { /* TODO: implement. */ }
 
-void Market::readParticipant(std::ifstream *ifstream) { /* TODO: implement. */ }
+void Market::readParticipant(std::ifstream *ifstream) {
+	string participantId;
+	getline(*ifstream, participantId);
+
+	if (!this->getParticipantManager().hasParticipant(stoi(participantId)))
+	// TODO: throw except
+
+}
 
 void Market::readProduct(std::ifstream *ifstream) { /* TODO: implement. */ }
 
 void Market::readConserve(std::ifstream *ifstream) { /* TODO: implement. */ }
+
+const ParticipantManager &Market::getParticipantManager() const {
+	return participantManager;
+}
