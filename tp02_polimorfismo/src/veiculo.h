@@ -7,24 +7,22 @@ using namespace std;
 
 class Veiculo {
 
-  protected:
-	string marca;
-	int mes, ano;
-
   public:
 	Veiculo(string mc, int m, int a);
+	virtual ~Veiculo() = default;
 
-	int a();
+	virtual int info() const;
 
-	virtual ~Veiculo() {};
-
-	virtual int info() const {return 0;};
 	virtual float calcImposto() const = 0;
-
 	bool operator<(const Veiculo &v) const;
 
 	int getAno() const;
+
 	string getMarca() const;
+
+  protected:
+	string marca;
+	int mes, ano;
 };
 
 class Motorizado : public Veiculo {
@@ -37,9 +35,9 @@ class Motorizado : public Veiculo {
 
 	virtual ~Motorizado() {};
 
-	virtual int info() const {return 0;};
+	virtual int info() const;
 
-	float calcImposto() const {return 0;}
+	float calcImposto() const;
 
 	string getCombustivel() const;
 };
@@ -51,7 +49,7 @@ class Automovel : public Motorizado {
 
 	~Automovel() {}
 
-	int info() const {return 0;};
+	int info() const;
 };
 
 
@@ -64,7 +62,7 @@ class Camiao : public Motorizado {
 
 	~Camiao() {}
 
-	int info() const {return 0;};
+	int info() const;
 };
 
 
@@ -77,8 +75,9 @@ class Bicicleta : public Veiculo {
 
 	~Bicicleta() {}
 
-	int info() const {return 0;};
-	float calcImposto() const {return 0;};
+	int info() const;
+
+	float calcImposto() const;
 };
 
 

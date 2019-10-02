@@ -11,6 +11,13 @@ class Frota {
 	vector<Veiculo *> veiculos;
 
   public:
+	void adicionaVeiculo(Veiculo *v1);
+	int numVeiculos() const;
+	int menorAno() const;
+	float totalImposto() const;
+
+	vector<Veiculo *> operator()(int anoM) const;
+
 	friend ostream &operator<<(ostream &o, const Frota &f);
 };
 
