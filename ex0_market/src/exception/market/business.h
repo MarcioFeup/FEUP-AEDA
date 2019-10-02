@@ -2,11 +2,10 @@
 // Created by marcio on 9/28/19.
 //
 
-#ifndef AEDAEX0_MARKET_H
-#define AEDAEX0_MARKET_H
+#ifndef AEDAEX0_MARKET_EXCEPTION_H
+#define AEDAEX0_MARKET_EXCEPTION_H
 
-
-#include <bits/exception.h>
+#include <string>
 #include <stdexcept>
 
 /*!
@@ -14,8 +13,25 @@
  *
  * @author Márcio Duarte
  */
-class UnavailableProduct : public std::exception {
+class UnavailableProductException : public std::invalid_argument {
+};
+
+/*!
+ * Represents an exception caused by requesting a participant that doesn't exist.
+ *
+ * @author Márcio Duarte
+ */
+class NonExistentParticipantException : public std::invalid_argument {
+
+  public:
+
+	/*!
+	 * Constructs a new exception.
+	 *
+	 * @param error the error to call
+	 */
+	explicit NonExistentParticipantException(std::string error = "The participant does not exist.");
 };
 
 
-#endif //AEDAEX0_MARKET_H
+#endif //AEDAEX0_MARKET_EXCEPTION_H

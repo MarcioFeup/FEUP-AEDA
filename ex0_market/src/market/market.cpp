@@ -99,9 +99,15 @@ void Market::readParticipant(std::ifstream *ifstream) {
 	string participantId;
 	getline(*ifstream, participantId);
 
-	if (!this->getParticipantManager().hasParticipant(stoi(participantId)))
-	// TODO: throw except
+	int id = stoi(participantId);
 
+	if (!this->participantManager.hasParticipant(id))
+		throw NonExistentParticipantException("The participant with id " + participantId + " does not exist.");
+	Participant participant = this->participantManager.getParticipant(id);
+
+	// TODO: read product.
+	// TODO: read quantity.
+	// TODO: read price.
 }
 
 void Market::readProduct(std::ifstream *ifstream) { /* TODO: implement. */ }

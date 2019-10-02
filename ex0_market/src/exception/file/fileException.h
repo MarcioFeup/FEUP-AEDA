@@ -48,7 +48,7 @@ class NonExistentFileException : public FileException {
 	 *
 	 * @param error the error message
 	 */
-	explicit NonExistentFileException(const std::string &error);
+	explicit NonExistentFileException(const std::string &error = "The file does not exist.");
 };
 
 /*!

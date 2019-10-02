@@ -3,3 +3,5 @@
 //
 
 #include "business.h"
+
+NonExistentParticipantException::NonExistentParticipantException(std::string error) : std::invalid_argument(error) {}
