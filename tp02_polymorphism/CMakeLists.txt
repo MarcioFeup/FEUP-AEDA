@@ -8,6 +8,6 @@ include_directories(lib/googletest-master/googletest/include)
 include_directories(lib/googletest-master/googlemock/include)
 
 
-add_executable(aeda1920_fp02 main.cpp Tests/tests.cpp src/frota.cpp src/veiculo.cpp src/config.h)
+add_executable(aeda1920_fp02 main.cpp Tests/tests.cpp src/fleet.cpp src/vehicle.cpp src/config.h)
 
 target_link_libraries(aeda1920_fp02 gtest gtest_main)

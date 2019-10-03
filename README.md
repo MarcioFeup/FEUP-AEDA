@@ -1,5 +1,5 @@
 # FEUP-AEDA
-Every code written in the course by me
+Algoritmos e Estruturas de Dados ([Algorithms and Data Structures](https://sigarra.up.pt/feup/en/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=436433)) proposed exercises' resolution.
 
 
 
@@ -7,4 +7,4 @@ Every code written in the course by me
 
 [Google unit testing framework](https://github.com/google/googletest) was used for unit testing.
 
-You can find a tutorial on how to use it [here](https://www.jetbrains.com/help/clion/creating-google-test-run-debug-configuration-for-test.html)!
+Check [here](https://www.jetbrains.com/help/clion/creating-google-test-run-debug-configuration-for-test.html) for more info on unit testing.
