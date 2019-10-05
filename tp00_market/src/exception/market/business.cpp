@@ -1,7 +1,4 @@
-//
-// Created by marcio on 9/28/19.
-//
-
 #include "business.h"
 
-NonExistentParticipantException::NonExistentParticipantException(std::string error) : std::invalid_argument(error) {}
+NonExistentParticipantException::NonExistentParticipantException(int id, const std::string &error) :
+		std::invalid_argument("Participant " + std::to_string(id) + ": " + error), id(id), error(error) {}

@@ -17,22 +17,28 @@ class FileException : std::runtime_error {
 	/*!
 	 * The constructor of the exception.
 	 *
+	 * @param fileName the name of the file that caused the exception
 	 * @param errorMessage the error message
 	 */
-	explicit FileException(const std::string &errorMessage);
+	explicit FileException(const std::string &fileName, const std::string &errorMessage);
 
 	/*!
 	 * Gets an informative message about the exception.
 	 *
 	 * @return the informative message
 	 */
-	const char* what() const noexcept override ;
+	virtual const char *what() const noexcept override;
 
   private:
 	/*!
 	 * An informative message about the exception.
 	 */
 	const std::string error;
+
+	/*!
+ 	* The name of the problematic file.
+ 	*/
+	const std::string fileName;
 };
 
 /*!
@@ -44,11 +50,12 @@ class NonExistentFileException : public FileException {
 
   public:
 	/*!
-	 * The constructor of the message.
+	 * The constructor of the exception.
 	 *
-	 * @param error the error message
+	 * @param fileName the name of the non existent file
+	 * @param error an informative message about the exception
 	 */
-	explicit NonExistentFileException(const std::string &error = "The file does not exist.");
+	explicit NonExistentFileException(const std::string &fileName, const std::string &error = "The file does not exist.");
 };
 
 /*!
@@ -62,9 +69,10 @@ class InputException : public FileException {
 	/*!
 	 * The constructor of the exception.
 	 *
-	 * @param error the error message
+	 * @param fileName the name of the file where the input exception exists
+	 * @param error an informative message about the exception
 	 */
-	explicit InputException(const std::string &error);
+	explicit InputException(const std::string &fileName, const std::string &error = "There is an input error in the file.");
 };
 
 

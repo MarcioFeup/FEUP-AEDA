@@ -4,14 +4,10 @@
 
 #include "participant.h"
 
-Participant::Participant(State state, int id) : state(state), id(id) {}
+Participant::Participant(int id) : id(id) {}
 
 void Participant::addProduct(MarketableProduct marketableProduct) {
 	associatedProducts.push_back(marketableProduct);
-}
-
-bool Participant::isSeller() const {
-	return this->state == SELLER;
 }
 
 bool Participant::hasProduct(int productId, int quantity) const {
@@ -33,3 +29,7 @@ const MarketableProduct &Participant::getProduct(int productId, int quantity) co
 const int Participant::getId() const {
 	return id;
 }
+
+Client::Client(int id) : Participant(id) {}
+
+Seller::Seller(int id) : Participant(id) {}

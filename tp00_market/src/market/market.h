@@ -95,7 +95,7 @@ class ParticipantManager {
 	/*!
 	 * The list of participants.
 	 */
-	std::vector<Participant> participants;
+	std::vector<Participant *> participants;
 };
 
 /*!
@@ -115,13 +115,13 @@ class Market {
 	void start(const std::string &fileName);
 
 	/*!
-	 * Gets the participant who sells a given product for the lowest price.
+	 * Gets the seller who sells a given product for the lowest price.
 	 *
 	 * @param productId the ID of the product
 	 * @param quantity the minimum quantity required
-	 * @return the participant
+	 * @return the seller
 	 */
-	const Participant *lowestPrice(int productId, int quantity) const;
+	const Seller *lowestPrice(int productId, int quantity) const;
 
 	/*!
 	 * Defines new sale prices for all marketable products.
@@ -151,21 +151,21 @@ class Market {
 	 *
 	 * @param ifstream the ifstream
 	 */
-	void readParticipant(std::ifstream *ifstream);
+	void readParticipant(std::ifstream &ifstream);
 
 	/*!
 	 * Reads a single product from the ifstream.
 	 *
 	 * @param ifstream the ifstream
 	 */
-	void readProduct(std::ifstream *ifstream);
+	void readProduct(std::ifstream &ifstream);
 
 	/*!
 	 * Reads a single conserve from the ifstream.
 	 *
 	 * @param ifstream the ifstream
 	 */
-	void readConserve(std::ifstream *ifstream);
+	void readConserve(std::ifstream &ifstream);
 
 };
 

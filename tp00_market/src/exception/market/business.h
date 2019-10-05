@@ -1,7 +1,3 @@
-//
-// Created by marcio on 9/28/19.
-//
-
 #ifndef AEDAEX0_MARKET_EXCEPTION_H
 #define AEDAEX0_MARKET_EXCEPTION_H
 
@@ -24,13 +20,24 @@ class UnavailableProductException : public std::invalid_argument {
 class NonExistentParticipantException : public std::invalid_argument {
 
   public:
-
 	/*!
 	 * Constructs a new exception.
 	 *
-	 * @param error the error to call
+	 * @param the invalid ID
+	 * @param error a description of the error
 	 */
-	explicit NonExistentParticipantException(std::string error = "The participant does not exist.");
+	explicit NonExistentParticipantException(int id, const std::string &error = "The participant does not exist.");
+
+  private:
+	/*!
+	 * The ID of the participant.
+	 */
+	const int id;
+
+	/*!
+	 * A description of the error.
+	 */
+	const std::string error;
 };
 
 

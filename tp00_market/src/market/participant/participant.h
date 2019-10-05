@@ -1,7 +1,3 @@
-//
-// Created by marcio on 9/28/19.
-//
-
 #ifndef AEDAEX0_PARTICIPANT_H
 #define AEDAEX0_PARTICIPANT_H
 
@@ -10,14 +6,9 @@
 #include "../product/marketable_product.h"
 
 /*!
- * Represents the position of a participant in the market
- */
-enum State {
-	CLIENT, SELLER
-};
-
-/*!
  * Defines someone that is interested in marketing.
+ *
+ * @author Márcio Duarte
  */
 class Participant {
 
@@ -28,7 +19,7 @@ class Participant {
 	 * @param state the state
 	 * @param id the id
 	 */
-	Participant(State state, int id);
+	Participant(int id);
 
 	/*!
 	 * Adds a marketable product to the list.
@@ -36,13 +27,6 @@ class Participant {
 	 * @param marketableProduct the marketable product
 	 */
 	void addProduct(MarketableProduct marketableProduct);
-
-	/*!
-	 * Gets if the participant is a seller.
-	 *
-	 * @return true if the participant is a seller, false otherwise
-	 */
-	bool isSeller() const;
 
 	/*!
 	 * Gets if the participant has a certain product in its list.
@@ -77,15 +61,41 @@ class Participant {
 	const int id;
 
 	/*!
-	 * Defines what the participant is up to in the market.
-	 */
-	State state;
-
-	/*!
 	 * Set of products of interest.
 	 */
 	std::vector<MarketableProduct> associatedProducts;
 };
 
+/*!
+ * Represents a participant that buys products.
+ *
+ * @author Márcio Duarte
+ */
+class Client : public Participant {
+
+  public:
+	/*!
+	 * Constructs a new client given its ID.
+	 *
+	 * @param id the ID
+	 */
+	Client(int id);
+};
+
+/*!
+ * Represents a participant that sells products.
+ *
+ * @author Márcio Duarte
+ */
+class Seller : public Participant {
+
+  public:
+	/*!
+	 * Constructs a new seller given its ID.
+	 *
+	 * @param id the ID
+	 */
+	Seller(int id);
+};
 
 #endif //AEDAEX0_PARTICIPANT_H
