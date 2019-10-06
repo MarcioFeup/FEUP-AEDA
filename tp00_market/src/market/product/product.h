@@ -1,7 +1,3 @@
-//
-// Created by marcio on 9/28/19.
-//
-
 #ifndef AEDAEX0_PRODUCT_H
 #define AEDAEX0_PRODUCT_H
 
@@ -22,13 +18,28 @@ class Product {
 	Product(int id);
 
 	/*!
+	 * Gets the percentage to discount on sale on the product.
+	 *
+	 * @return the percentage
+	 */
+	virtual float getDiscountPercentage() const;
+
+	/*!
 	 * Gets the ID of the product.
 	 *
 	 * @return the ID
 	 */
-	const int getId() const;
+	int getId() const;
+
+  protected:
+
+	/*!
+	 * Percentage to discount on sale.
+	 */
+	static constexpr float DISCOUNT_PERCENTAGE = 2;
 
   private:
+
 	/*!
 	 * The ID of the product.
 	 */
@@ -43,6 +54,7 @@ class Product {
 class Conserve : public Product {
 
   public:
+
 	/*!
 	 * Constructor of conserve that gets its ID, ideal temperature and shelf life in days.
 	 *
@@ -52,7 +64,27 @@ class Conserve : public Product {
 	 */
 	Conserve(int id, float idealTemp, int shelfLife);
 
+	/*!
+	 * Gets the percentage to discount on sale on the product.
+	 *
+	 * @return the percentage
+	 */
+	float getDiscountPercentage() const override;
+
+  protected:
+
+	/*!
+	 * The maximum shelf life in which the product receives a better discount.
+	 */
+	static constexpr int MAX_DISCOUNTABLE_SHELF_LIFE = 20;
+
+	/*!
+	 * Percentage of a great discount on sale.
+	 */
+	static constexpr float GREAT_DISCOUNT_PERCENTAGE = 5;
+
   private:
+
 	/*!
 	 * The ideal temperature to conserve the product.
 	 */

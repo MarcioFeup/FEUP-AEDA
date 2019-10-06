@@ -1,10 +1,4 @@
-//
-// Created by marcio on 9/28/19.
-//
-
 #include "fileException.h"
-
-#include <utility>
 
 FileException::FileException(const std::string &fileName, const std::string &errorMessage) :
 		runtime_error(fileName + ": " + errorMessage), error(errorMessage), fileName(fileName) {}

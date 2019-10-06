@@ -1,7 +1,3 @@
-//
-// Created by Márcio on 9/28/19.
-//
-
 #ifndef AEDAEX0_FILEEXCEPTION_H
 #define AEDAEX0_FILEEXCEPTION_H
 

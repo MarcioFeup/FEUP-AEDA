@@ -23,7 +23,7 @@ const MarketableProduct &Participant::getProduct(int productId, int quantity) co
 		if (i->getProduct()->getId() == productId && i->getQuantity() >= quantity)
 			return *i;
 
-	return associatedProducts[0]; // TODO: what to return?
+	return associatedProducts[0];
 }
 
 const int Participant::getId() const {
@@ -33,3 +33,8 @@ const int Participant::getId() const {
 Client::Client(int id) : Participant(id) {}
 
 Seller::Seller(int id) : Participant(id) {}
+
+void Seller::discount() {
+	for (MarketableProduct product : associatedProducts)
+		product.applyDiscount();
+}

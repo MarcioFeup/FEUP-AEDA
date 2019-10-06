@@ -16,6 +16,7 @@
 class MarketableProduct {
 
   public:
+
 	/*!
 	 * Marketable product constructor, providing its product, quantity and price.
 	 *
@@ -24,6 +25,11 @@ class MarketableProduct {
 	 * @param price the price
 	 */
 	MarketableProduct(Product *product, int quantity, float price);
+
+	/*!
+	 * Applies a predefined discount.
+	 */
+	void applyDiscount();
 
 	/*!
 	 * Gets the product.
@@ -47,6 +53,7 @@ class MarketableProduct {
 	float getPrice() const;
 
   private:
+
 	/*!
 	 * The pointer to the product of the market.
 	 */

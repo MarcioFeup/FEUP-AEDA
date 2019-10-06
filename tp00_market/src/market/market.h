@@ -35,36 +35,52 @@ class ProductManager {
 	bool addProduct(Product product);
 
 	/*!
+	 * Verifies if a product exists by its ID.
+	 *
+	 * @param productId the ID
+	 * @return true if it exists, false otherwise
+	 */
+	bool hasProduct(int productId) const;
+
+	/*!
 	 * Gets a product by its ID.
+	 * Returns null if such product does not exist, safe use with hasProduct method.
 	 *
 	 * @param productId the product's ID
 	 * @return the reference to the product
 	 */
-	const Product &getProduct(int productId) const;
+	Product *getProduct(int productId);
 
   private:
+
 	/*!
 	 * The list of products.
 	 */
 	std::vector<Product *> products;
-
-	/*!
-	 * Verifies if a product exists by its ID.
-	 *
-	 * @param productId the id
-	 * @return true case it exists, false otherwise
-	 */
-	bool productExists(int productId) const;
 };
 
 /*!
- * Manages the participants, providing access to a list of them.
+ * Manages the participants, providing access to lists of clients and sellers.
  *
  * @author Márcio Duarte
  */
 class ParticipantManager {
 
   public:
+	/*!
+	* Gets the seller who sells a given product for the lowest price.
+	 *
+	 * @param productId the ID of the product
+	 * @param quantity the minimum quantity required
+	 * @return the seller
+	 */
+	const Seller *lowestPrice(int productId, int quantity);
+
+	/*!
+	 * Defines new sale prices for all marketable products.
+	 */
+	void sale();
+
 
 	/*!
 	 * Verifies if a participant with a given ID exists.
@@ -76,26 +92,24 @@ class ParticipantManager {
 
 	/*!
 	 * Gets a participant by its ID.
-	 * If the participant is not found, will return unexpected values, so one should use this function in pair with
+	 * If the participant is not found, will return null, so one should use this function in pair with
 	 * "hasParticipant(int)".
 	 *
 	 * @param id the ID
 	 * @return the correspondent participant
 	 */
-	const Participant &getParticipant(int id);
-
-	/*!
-	 * Gets the vector of participants, immutable.
-	 *
-	 * @return the vector
-	 */
-	const std::vector<Participant> getParticipants() const;
+	const Participant *getParticipant(int id);
 
   private:
 	/*!
-	 * The list of participants.
+	 * The list of clients.
 	 */
-	std::vector<Participant *> participants;
+	std::vector<Client> clients;
+
+	/*!
+	 * The list of sellers.
+	 */
+	std::vector<Seller> sellers;
 };
 
 /*!
@@ -113,20 +127,6 @@ class Market {
 	 * @param fileName the name of the file to read
 	 */
 	void start(const std::string &fileName);
-
-	/*!
-	 * Gets the seller who sells a given product for the lowest price.
-	 *
-	 * @param productId the ID of the product
-	 * @param quantity the minimum quantity required
-	 * @return the seller
-	 */
-	const Seller *lowestPrice(int productId, int quantity) const;
-
-	/*!
-	 * Defines new sale prices for all marketable products.
-	 */
-	void sale();
 
 	/*!
 	 * Gets the manager of participants, immutable.

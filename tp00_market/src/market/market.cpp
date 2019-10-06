@@ -16,29 +16,23 @@ ProductManager::~ProductManager() {
 	products.clear();
 }
 
-const Product &ProductManager::getProduct(int productId) const {
-	Product *res = NULL;
-
+Product *ProductManager::getProduct(int productId) {
 	for (Product *p : products)
 		if (p->getId() == productId)
-			res = p;
+			return p;
 
-	if (res == NULL) {
-		//TODO: throw future exception.
-	}
-
-	return *res;
+	return NULL;
 }
 
 bool ProductManager::addProduct(Product product) {
-	if (productExists(product.getId()))
+	if (hasProduct(product.getId()))
 		return false;
 
 	products.push_back(new Product(product));
 	return true;
 }
 
-bool ProductManager::productExists(int productId) const {
+bool ProductManager::hasProduct(int productId) const {
 	for (Product *p : products)
 		if (p->getId() == productId)
 			return true;
@@ -46,24 +40,51 @@ bool ProductManager::productExists(int productId) const {
 	return false;
 }
 
-const Participant &ParticipantManager::getParticipant(int id) {
+const Seller *ParticipantManager::lowestPrice(int productId, int quantity) {
+	Seller *bestSeller = nullptr;
+	float lowestPrice = std::numeric_limits<float>::max(), price;
 
-	for (int i = 0; i < participants.size(); ++i) {
-		if(participants[i]->getId() == id)
-			return *participants[i];
+	for (Seller &seller : sellers) {
+		if (seller.hasProduct(productId, quantity)) {
+			price = seller.getProduct(productId, quantity).getPrice();
+
+			if (price < lowestPrice) {
+				lowestPrice = price;
+				bestSeller = &seller;
+			}
+		}
 	}
-	return *participants[participants.size()]; // invalid value.
+
+	return bestSeller;
+}
+
+void ParticipantManager::sale() {
+	for (Seller &seller : sellers)
+		seller.discount();
+}
+
+const Participant *ParticipantManager::getParticipant(int id) {
+	for (Client &client : clients)
+		if (client.getId() == id)
+			return &client;
+
+	for (Seller &seller : sellers)
+		if (seller.getId() == id)
+			return &seller;
+
+	return NULL;
 }
 
 bool ParticipantManager::hasParticipant(int id) {
-	for (Participant *participant : participants)
-		if (participant->getId() == id)
+	for (Client &client : clients)
+		if (client.getId() == id)
 			return true;
-	return false;
-}
 
-const std::vector<Participant> ParticipantManager::getParticipants() const {
-	return std::vector<Participant>();
+	for (Seller &seller : sellers)
+		if (seller.getId() == id)
+			return true;
+
+	return false;
 }
 
 void Market::start(const string &fileName) {
@@ -88,25 +109,24 @@ void Market::start(const string &fileName) {
 	in.close();
 }
 
-const Seller *Market::lowestPrice(int productId, int quantity) const {
-	// TODO: complete.
-	return nullptr;
-}
-
-void Market::sale() { /* TODO: implement. */ }
-
 void Market::readParticipant(std::ifstream &ifstream) {
-	string participantId;
-	getline(ifstream, participantId);
+	string element;
+	// reads participant.
+	getline(ifstream, element);
+	int participantId = stoi(element);
+	if (!this->participantManager.hasParticipant(participantId))
+		throw NonExistentParticipantException(participantId);
+	Participant participant = *this->participantManager.getParticipant(participantId);
 
-	int id = stoi(participantId);
+	// reads product.
+	getline(ifstream, element);
+	int productId = stoi(element);
+	if (!this->productManager.hasProduct(productId))
+		throw UnavailableProductException(productId, "The product does not exist.");
+	Product *product = this->productManager.getProduct(productId);
 
-	if (!this->participantManager.hasParticipant(id))
-		throw NonExistentParticipantException(id);
-	Participant participant = this->participantManager.getParticipant(id);
-
-	// TODO: read product.
 	// TODO: read quantity.
+
 	// TODO: read price.
 }
 

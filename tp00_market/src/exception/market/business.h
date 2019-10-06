@@ -10,6 +10,28 @@
  * @author Márcio Duarte
  */
 class UnavailableProductException : public std::invalid_argument {
+
+  public:
+
+	/*!
+	 * Constructs a new exception.
+	 *
+	 * @param the invalid ID
+	 * @param error a description of the error
+	 */
+	explicit UnavailableProductException(int id, const std::string &error = "The product is unavailable.");
+
+  private:
+
+	/*!
+	 * The ID of the product.
+	 */
+	const int id;
+
+	/*!
+	 * A description of the error.
+	 */
+	const std::string error;
 };
 
 /*!
@@ -20,6 +42,7 @@ class UnavailableProductException : public std::invalid_argument {
 class NonExistentParticipantException : public std::invalid_argument {
 
   public:
+
 	/*!
 	 * Constructs a new exception.
 	 *

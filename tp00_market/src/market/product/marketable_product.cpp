@@ -1,11 +1,11 @@
-//
-// Created by marcio on 9/28/19.
-//
-
 #include "marketable_product.h"
 
 MarketableProduct::MarketableProduct(Product *product, int quantity, float price) : product(product),
 																					quantity(quantity), price(price) {}
+
+void MarketableProduct::applyDiscount() {
+	this->price -= ((float) this->product->getDiscountPercentage() / 100) * this->price;
+}
 
 const Product *MarketableProduct::getProduct() const {
 	return product;

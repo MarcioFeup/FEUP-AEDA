@@ -52,18 +52,21 @@ class Participant {
 	 * @param quantity the quantity
 	 * @return the marketable product
 	 */
-	const MarketableProduct &getProduct(int productId, int quantity) const;
+	virtual const MarketableProduct &getProduct(int productId, int quantity) const;
 
-  private:
-	/*!
-	 * Unique code of the participant.
-	 */
-	const int id;
+  protected:
 
 	/*!
 	 * Set of products of interest.
 	 */
 	std::vector<MarketableProduct> associatedProducts;
+
+  private:
+
+	/*!
+	 * Unique code of the participant.
+	 */
+	const int id;
 };
 
 /*!
@@ -96,6 +99,11 @@ class Seller : public Participant {
 	 * @param id the ID
 	 */
 	Seller(int id);
+
+	/*!
+	 * Applies a discount to all their associated products.
+	 */
+	void discount();
 };
 
 #endif //AEDAEX0_PARTICIPANT_H
