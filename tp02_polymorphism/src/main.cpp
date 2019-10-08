@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "src/vehicle.h"
+#include "vehicle.h"
 
 
 int main(int argc, char* argv[]) {
