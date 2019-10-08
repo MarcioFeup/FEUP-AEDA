@@ -15,6 +15,7 @@
 class Teacher : public Personal{
 
   public:
+
 	/**
 	 * Constructs a new teacher, assigning its ID, modality and classes
 	 *
@@ -31,6 +32,7 @@ class Teacher : public Personal{
 	const int &getId() const override;
 
   private:
+
 	/**
 	 * The unique ID of the teacher.
 	 */

@@ -18,6 +18,7 @@
 class SportsClub {
 
   private:
+
 	/**
 	 * The set of supported modalities.
 	 */

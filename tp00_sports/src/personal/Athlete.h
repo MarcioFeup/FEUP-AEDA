@@ -8,10 +8,13 @@
 
 /**
  * Represents an athlete.
+ *
+ * @author Márcio Duarte
  */
 class Athlete : public Personal {
 
   public:
+
 	/**
 	 * Constructs a new athlete, assigning its ID, modality and class.
 	 *

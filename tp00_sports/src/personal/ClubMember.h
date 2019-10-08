@@ -6,6 +6,8 @@
 
 /**
  * Represents a member of the club.
+ *
+ * @author Márcio Duarte
  */
 class ClubMember : public Personal {
 
