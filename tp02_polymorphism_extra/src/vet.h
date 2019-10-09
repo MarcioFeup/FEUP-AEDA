@@ -12,8 +12,6 @@ class Vet {
 
 	string getName() const;
 
-	// TODO: complete.
-
   private:
 	string name;
 	long id;

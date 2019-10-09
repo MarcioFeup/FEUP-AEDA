@@ -29,7 +29,6 @@ class Animal {
 	const Vet *getVet() const;
 
 	void setVet(Vet *vet);
-	// TODO: complete.
 
   protected:
 	static int youngest;
@@ -49,8 +48,6 @@ class Dog : public Animal {
 
 	int getYoungAge() const override;
 
-	// TODO: complete.
-
   private:
 	static const int YOUNG_AGE = 5;
 
@@ -67,8 +64,6 @@ class Flyer {
 
 	virtual string info() const;
 
-	// TODO: complete.
-
   private:
 	int maxVelocity;
 	int maxHeight;
@@ -83,8 +78,6 @@ class Bat : public Animal, public Flyer {
 	int getYoungAge() const override;
 
 	string info() const override;
-
-	// TODO: complete.
 
   private:
 	static const int YOUNG_AGE = 4;
