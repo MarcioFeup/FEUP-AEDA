@@ -10,6 +10,8 @@ class Vet {
   public:
 	Vet(string name, long id);
 
+	string info() const;
+
 	string getName() const;
 
   private:

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <fstream>
 
 using namespace std;
 
@@ -14,15 +15,12 @@ bool Zoo::isYoungAnimal(string name) const {
 	return false;
 }
 
-void Zoo::readVets(istream &istream) {
+void Zoo::readVets(ifstream &istream) {
 	string name, idStr;
 	long id;
 
-	while (!istream.eof()) {
-		// TODO: not reading.
-		getline(istream, name);
+	while (getline(istream, name)) {
 		getline(istream, idStr);
-
 		id = stol(idStr);
 
 		Vet *vet = new Vet(name, id);

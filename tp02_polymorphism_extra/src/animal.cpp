@@ -14,7 +14,7 @@ Animal::Animal(string name, int age) : name(std::move(name)), age(age), vet(null
 
 string Animal::info() const {
 	string info;
-	info.append(name).append(", ").append(to_string(age));
+	info.append(name).append(", ").append(to_string(age)).append(", ").append(vet->info());
 	return info;
 }
 

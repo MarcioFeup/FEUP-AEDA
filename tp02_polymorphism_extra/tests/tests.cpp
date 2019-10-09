@@ -86,7 +86,7 @@ TEST(test, e_alocarVeterinarios){
     z1.addAnimal(a4);
     z1.addAnimal(a5);
 
-    ifstream fVet("/");
+    ifstream fVet("vets.txt");
     if (!fVet) cerr << "Ficheiro de vets inexistente!\n";
     else z1.readVets(fVet);
     fVet.close();

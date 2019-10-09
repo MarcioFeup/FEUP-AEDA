@@ -9,7 +9,7 @@ class Zoo {
   public:
 	bool isYoungAnimal(string name) const;
 
-	void readVets(istream &istream);
+	void readVets(ifstream &istream);
 
 	string info() const;
 
