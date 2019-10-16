@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 #include "../src/model/parking_lot.h"
 #include "../src/exception/non_existent_client.h"
 #include "../src/exception/non_existent_position.h"

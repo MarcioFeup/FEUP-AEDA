@@ -32,10 +32,6 @@ bool Client::operator==(const Client &another_client) const {
 	return this->name == another_client.name;
 }
 
-bool operator<(const Client &client, const Client &anotherClient) {
-	return client.frequency < anotherClient.frequency;
-}
-
 std::ostream &operator<<(std::ostream &os, const Client &client) {
 	os << client.name << ", ";
 	if (!client.present) os << "não ";

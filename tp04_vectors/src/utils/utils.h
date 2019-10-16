@@ -28,14 +28,14 @@ namespace sort {
 	}
 
 	template <class Comparable>
-	const Comparable &median3(vector<Comparable> &v, int left, int right) {
+	const Comparable &median3(vector<Comparable> &v, int left, int right, bool (*less_than)(Comparable, Comparable)) {
 		int center = (left + right) / 2;
 
-		if (v[center] < v[left])
+		if (less_than(v[center], v[left]))
 			sort::swap(v, center, left);
-		if (v[right] < v[left])
+		if (less_than(v[right], v[left]))
 			sort::swap(v, right, left);
-		if (v[right] < v[center])
+		if (less_than(v[right], v[center]))
 			sort::swap(v, right, center);
 		sort::swap(v, center, right - 1);
 		return v[right - 1];
@@ -58,7 +58,7 @@ namespace sort {
 			insertionSort(v, less_than);
 
 		else {
-			Comparable x = median3(v, left, right);
+			Comparable x = median3(v, left, right, less_than);
 			int i = left;
 			int j = right - 1;
 
