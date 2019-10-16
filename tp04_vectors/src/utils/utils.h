@@ -10,8 +10,8 @@ using namespace std;
 namespace search {
 
 	template<class Comparable>
-	unsigned int sequentialSearch(const vector<Comparable> &v, Comparable x) {
-		for (unsigned int i = 0; i < v.size(); i++)
+	int sequentialSearch(const vector<Comparable> &v, Comparable x) {
+		for (int i = 0; i < v.size(); i++)
 			if (v[i] == x)
 				return i;   // found
 		return -1;     // not found

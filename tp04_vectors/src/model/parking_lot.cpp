@@ -9,11 +9,11 @@
 using namespace std;
 
 
-inline bool compareByFrequency(Client a, Client b) {
+inline bool compareByFrequency(const Client &a, const Client &b) {
 	return a.getFrequency() < b.getFrequency();
 }
 
-inline bool compareByName(Client a, Client b) {
+inline bool compareByName(const Client &a, const Client &b) {
 	return a.getName() < b.getName();
 }
 
@@ -22,15 +22,15 @@ ParkingLot::ParkingLot(unsigned int capacity, unsigned int numMaxClients) : capa
 	empty_slots = capacity;
 }
 
-ParkingLot::~ParkingLot() {}
+ParkingLot::~ParkingLot() = default;
 
-vector<Client> ParkingLot::getClients() const { return clients; }
+const vector<Client> &ParkingLot::getClients() const { return clients; }
 
-unsigned int ParkingLot::getQtSpots() const { return capacity; }
+unsigned int ParkingLot::getCapacity() const { return capacity; }
 
 unsigned int ParkingLot::getQtdOccupiedSpots() const { return capacity - empty_slots; }
 
-unsigned int ParkingLot::clientPosition(const string &name) const {
+int ParkingLot::clientPosition(const string &name) const {
 	Client client = name;
 	return search::sequentialSearch(clients, client);
 }
@@ -122,10 +122,10 @@ ostream &operator<<(ostream &os, const ParkingLot &pl) {
 	return os;
 }
 
-Client ParkingLot::getClientAtPos(vector<Client>::size_type p) const {
-	if (p > clients.size() || p < 0)
-		throw NonExistentPosition(p);
+Client ParkingLot::getClientAtPos(vector<Client>::size_type position) const {
+	if (position > clients.size() || position < 0)
+		throw NonExistentPosition(position);
 
-	Client client = *(clients.begin() + p);
+	Client client = *(clients.begin() + position);
 	return client;
 }
