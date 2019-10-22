@@ -108,6 +108,10 @@ class Game {
 	bool operator==(Game &game) const;
 
   private:
+
+	/**
+	 * The list of children currently playing the game
+	 */
 	std::list<Child> children;
 };
 
