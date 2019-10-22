@@ -29,7 +29,6 @@ void Game::addChild(const Child &child) {
 }
 
 list<Child> &Game::reverse() {
-
 /*	Manual reverse:
 
 	auto *res = new list<Child>();
@@ -84,30 +83,31 @@ void Game::setChildren(const std::list<Child> &children) {
 }
 
 list<Child> Game::shuffle() const {
-	vector<const Child *> tmp(children.size());
+	vector<const Child *> tmp(children.size()); // temporary vector that will hold the order of children
 	unsigned long place;
 
 	for (auto it = children.begin(); it != children.end(); ++it) {
+
+		// finds a random position in the tmp vector
 		place = rand() % children.size();
-		while (tmp[place] != NULL) {
+		while (tmp[place] != nullptr) {
 			if (place == children.size()) {
 				place = 0;
 				continue;
 			}
 			place++;
 		}
+
+		// puts the child in the random position
 		tmp[place] = &(*it);
 	}
 
+	// copies all the information of the vector to a list and returns it.
 	list<Child> shuffled;
-	for (
-		const Child *child
-			: tmp)
-		shuffled.
-				push_back(*child);
+	for (const Child *child: tmp)
+		shuffled.push_back(*child);
 
-	return
-			shuffled;
+	return shuffled;
 }
 
 string Game::describe() const {
