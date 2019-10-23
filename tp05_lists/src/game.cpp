@@ -2,6 +2,7 @@
 
 #include <utility>
 #include <vector>
+#include <ctime>
 
 using namespace std;
 
@@ -85,6 +86,8 @@ void Game::setChildren(const std::list<Child> &children) {
 }
 
 list<Child> Game::shuffle() const {
+	srand(time(nullptr));
+
 	vector<const Child *> tmp(children.size()); // temporary vector that will hold the order of children
 	unsigned long place;
 
