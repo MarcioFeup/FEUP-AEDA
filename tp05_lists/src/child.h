@@ -5,11 +5,7 @@
 
 /**
  * Represents a child, providing access to its name and age.
- * Biologically, a child (plural: children) is a human being between the stages of birth and puberty, or between the
- * developmental period of infancy and puberty. The legal definition of child generally refers to a minor, otherwise
- * known as a person younger than the age of majority.
  * Children are also who play the "pim pam pum" game.
- *
  */
 class Child {
 

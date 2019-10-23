@@ -60,20 +60,22 @@ list<Child> Game::divide(unsigned age) {
 
 Child &Game::whoLooses(string sentence) {
 	unsigned qt_words = qtWords(std::move(sentence));
+	unsigned pos = 0;
+	unsigned qt_places;
 
 	auto it = children.begin();
 	while (children.size() > 1) {
-		it--; // the iterator was already initialized and needs to return to the first member
-		for (unsigned i = 0; i < qt_words; ++i) {
-			++it;
+		qt_places = (qt_words - 1) % children.size();
+		pos += qt_places;
 
-			if (it == children.end())
-				it = children.begin();
+		if (pos >= children.size()) {
+			it = children.begin();
+			pos = pos % children.size();
+			qt_places = pos;
 		}
+		std::advance(it, qt_places);
 
 		it = children.erase(it);
-		if (it == children.end())
-			it = children.begin();
 	}
 	return *children.begin();
 }
