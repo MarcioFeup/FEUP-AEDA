@@ -7,7 +7,7 @@ class TimeManager {
   public:
 	TimeManager(unsigned next_arrival, unsigned current_time = 0);
 	void start();
-	void advance(unsigned time);
+	void setCurrentTime(unsigned int currentTime);
 	unsigned getCurrentTime() const;
 	unsigned getNextArrival() const;
 	void setNextArrival(unsigned int nextArrival);

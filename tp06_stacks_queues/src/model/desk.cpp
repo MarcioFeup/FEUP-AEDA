@@ -5,15 +5,19 @@
 using namespace std;
 
 Desk::Desk(unsigned bundle_time) :
-		bundle_time(bundle_time), time_manager(TimeManager(rand() % 20 + 1)), time_until_leaves(0) {}
+		bundle_time(bundle_time), time_manager(TimeManager(rand() % 20 + 1)), leaving_time(0), attended_clients(0) {}
 
 void Desk::arrive() {
 	Client client;
-	clients.push(client);
-	this->time_manager.setNextArrival(rand() % 20 + 1);
 
-	this->time_until_leaves = time_manager.getCurrentTime() + client.getQtGifts() * bundle_time;
-	std::cout << "Time = " << time_manager.getCurrentTime() << "\nArrived new client with " << client.getQtGifts() << " gifts." << endl;
+	if (clients.empty())
+		this->leaving_time = time_manager.getCurrentTime() + client.getQtGifts() * bundle_time;
+
+	clients.push(client);
+	this->time_manager.setNextArrival(time_manager.getCurrentTime() + rand() % 20 + 1);
+
+	std::cout << "Time = " << time_manager.getCurrentTime() << "\tArrived new client with " << client.getQtGifts() << " gifts." << endl;
+	++attended_clients;
 }
 
 void Desk::leave() {
@@ -22,15 +26,30 @@ void Desk::leave() {
 
 	clients.pop();
 
+	std::cout << "Time = " << time_manager.getCurrentTime() << "\tNew client left." << endl;
+	if (clients.empty())
+		return;
+
 	Client next_client = clients.front();
 
 	unsigned time_taken = next_client.getQtGifts() * bundle_time;
-	this->time_until_leaves = time_manager.getCurrentTime() + time_taken;
-	std::cout << "Time = " << time_manager.getCurrentTime() << "\nNew client left." << endl;
+	this->leaving_time = time_manager.getCurrentTime() + time_taken;
 }
 
+// TODO
 void Desk::next() {
-	(time_until_leaves < time_manager.getNextArrival()) ? leave() : arrive();
+	if (clients.empty()) {
+		time_manager.setCurrentTime(time_manager.getNextArrival());
+		arrive();
+	} else {
+		if (time_manager.getNextArrival() < leaving_time) {
+			time_manager.setCurrentTime(time_manager.getNextArrival());
+			arrive();
+		} else {
+			time_manager.setCurrentTime(leaving_time);
+			leave();
+		}
+	}
 }
 
 Client &Desk::getNextClient() {
@@ -52,14 +71,14 @@ const TimeManager &Desk::getTimeManager() const {
 }
 
 unsigned int Desk::getTimeUntilLeaves() const {
-	return time_until_leaves;
+	return leaving_time;
 }
 
-unsigned int Desk::getQtClients() const {
-	return clients.size();
+unsigned int Desk::getAttendedClients() const {
+	return attended_clients;
 }
 
-ostream & operator <<(ostream & out, const Desk & desk) {
-	out << "Attended " << desk.getQtClients() << ";\tWaiting: " << desk.getClients().size() << "." << std::endl;
+ostream &operator<<(ostream &out, const Desk &desk) {
+	out << "Attended " << desk.getAttendedClients() << ";\tWaiting: " << desk.getClients().size() << "." << std::endl;
 	return out;
 }

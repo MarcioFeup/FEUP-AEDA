@@ -6,7 +6,7 @@
 #include <stack>
 #include <queue>
 #include <cstdlib>
-#include "../src/util/performance.h"
+#include "performance.h"
 #include "../src/model/client.h"
 #include "../src/model/desk.h"
 
@@ -84,7 +84,7 @@ TEST(test_2, a_ConstructorCliente){
 TEST(test_2, b_ConstructorDesk){
     srand(time(nullptr));
     Desk b;
-    EXPECT_EQ(0, b.getQtClients());
+    EXPECT_EQ(0, b.getAttendedClients());
     EXPECT_EQ(2, b.getBundleTime());
     EXPECT_EQ(0, b.getTimeManager().getCurrentTime());
     EXPECT_TRUE((b.getTimeManager().getNextArrival()>0 && b.getTimeManager().getNextArrival() <= 20));
@@ -132,17 +132,18 @@ TEST(test_2, d_SaidaDesk){
 }
 
 TEST(test_2, e_ProximoEvento){
+	srand(time(nullptr));
     cout << "Este teste nao falha. Verifique na consola os valores." << endl;
     EXPECT_TRUE(true);
     Desk b;
     b.next();
-    cout << "01: " << "Clientes atendidos: " << b.getQtClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
+    cout << "01: " << "Clientes atendidos: " << b.getAttendedClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
     b.next();
-    cout << "02: " << "Clientes atendidos: " << b.getQtClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
+    cout << "02: " << "Clientes atendidos: " << b.getAttendedClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
     b.next();
-    cout << "03: " << "Clientes atendidos: " << b.getQtClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
+    cout << "03: " << "Clientes atendidos: " << b.getAttendedClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
     b.next();
-    cout << "04: " << "Clientes atendidos: " << b.getQtClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
+    cout << "04: " << "Clientes atendidos: " << b.getAttendedClients() << " Tempo actual: " << b.getTimeManager().getCurrentTime() << " Prox arrival: " << b.getTimeManager().getNextArrival() << " Prox Saida: " << b.getTimeUntilLeaves() << endl;
 }
 
 TEST(test_2, f_Operador){

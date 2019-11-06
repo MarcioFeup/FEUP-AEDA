@@ -14,3 +14,7 @@ unsigned int TimeManager::getNextArrival() const {
 void TimeManager::setNextArrival(unsigned int nextArrival) {
 	next_arrival = nextArrival;
 }
+
+void TimeManager::setCurrentTime(unsigned int currentTime) {
+	current_time = currentTime;
+}
