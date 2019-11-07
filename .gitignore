@@ -170,3 +170,6 @@ _deps
 **/docs/html/
 **/docs/latex/
 **/Doxyfile
+
+# VSCode
+**/.vscode/
