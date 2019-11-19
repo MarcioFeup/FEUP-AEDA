@@ -61,6 +61,16 @@ public:
 	}
 
 	bool inverte4() {   //Grupo 2 b)
+		if (size() < 4)
+			return false;
+
+		int tmp = items[top];
+		items[top] = items[top - 3];
+		items[top - 3] = tmp;
+		tmp = items[top - 1];
+		items[top - 1] = items[top - 2];
+		items[top - 2] = tmp;
+
 		return true;
 	}
 }; 
