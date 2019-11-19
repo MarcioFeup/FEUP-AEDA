@@ -102,20 +102,31 @@ public:
 		if (prev == NULL) first = node; else prev->setNext(node);
 	}
 
+	// TODO fix for lst size > this size
 	void intercalar(const CSimpleList &lst) //Grupo 2 c)
 	{
 		CNode *a_first = this->first;
 		CNode *a_next = a_first->next();
 
 		CNode *it = lst.first;
+		CNode *oz;
 
-		while (it != 0) {
-			CNode *oz = new CNode(it->data(), a_next);
+		while (it != 0 && a_next != 0) {
+			oz = new CNode(it->data(), a_next);
 
 			a_first->setNext(oz);
 
 			a_first = a_next;
 			a_next = a_first->next();
+
+			it = it->next();
+		}
+
+		while (it != 0) {
+			oz = new CNode(it->data(), 0);
+			a_first->setNext(oz);
+
+			a_first = oz;
 
 			it = it->next();
 		}
@@ -130,7 +141,7 @@ public:
 
 		CNode *current = this->first;
 		CNode *next = current->next();
-		while (next != 0){
+		while (next != 0) {
 
 			if (current->data() == next->data()) {
 				current->setNext(next->next());

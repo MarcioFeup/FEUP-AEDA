@@ -102,11 +102,15 @@ TEST(test_2, test_c){
 	l1.insert_end(1); l1.insert_end(2); l1.insert_end(3);
 	l1.insert_end(4); l1.insert_end(5);
 	l2.insert_end(6); l2.insert_end(7); l2.insert_end(8);
+	l3.insert_end(1); l3.insert_end(2); l3.insert_end(3);
+	l3.insert_end(4); l3.insert_end(5);
 	//l1.print(); l2.print();
 	l1.intercalar(l2); //l1.print();
 	EXPECT_EQ("1 6 2 7 3 8 4 5 ",l1.toStr());
 	l1.intercalar(l2); //l1.print();
 	EXPECT_EQ("1 6 6 7 2 8 7 3 8 4 5 ",l1.toStr());
+	l2.intercalar(l3);
+	EXPECT_EQ("6 1 7 2 8 3 4 5 ", l2.toStr());
 }
 
 TEST(test_2, test_d){
