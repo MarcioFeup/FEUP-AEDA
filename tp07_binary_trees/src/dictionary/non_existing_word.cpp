@@ -1,7 +1,7 @@
 #include "non_existing_word.h"
 
-NonExistingWord::NonExistingWord(const Word &previousWord, const Word &nextWord) :
-		previous_word(previousWord), next_word(nextWord) {}
+NonExistingWord::NonExistingWord(const Word &previous_word, const Word &next_word) :
+		previous_word(previous_word), next_word(next_word) {}
 
 std::string NonExistingWord::getPreviousWord() const {
 	return previous_word.getWord();

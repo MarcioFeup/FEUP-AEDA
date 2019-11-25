@@ -25,13 +25,13 @@ BinaryTree<Circle> Game::buildTree(vector<Circle> aux, int pos, int levels_left)
 	return BinaryTree<Circle>(circle, left, right);
 }
 
-string Game::print() {
+string Game::to_string() {
 	string res = "";
 
 	for (BTItrLevel<Circle> it(board); !it.isAtEnd(); it.advance()) {
-		res += to_string(it.retrieve().getScore()) + "-";
-		res += (it.retrieve().getState()) ? "true" : "false";
-		res += "-" + to_string(it.retrieve().getVisitCount()) + "\n";
+		res += std::to_string(it.retrieve().getScore()) + "-";
+		res += (it.retrieve().isToRight()) ? "true" : "false";
+		res += "-" + std::to_string(it.retrieve().getVisitCount()) + "\n";
 	}
 
 	return res;
@@ -47,7 +47,7 @@ int Game::play() {
 		score = current.getScore();
 		to_reach = pos * 2;
 
-		if (current.getState())
+		if (current.isToRight())
 			to_reach++;
 
 		current.changeState();

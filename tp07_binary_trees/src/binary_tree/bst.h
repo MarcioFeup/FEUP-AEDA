@@ -1,3 +1,5 @@
+// This file is authored by the teacher with no modifications made by me.
+
 #ifndef AEDA1920_FP07_BST_H
 #define AEDA1920_FP07_BST_H
 

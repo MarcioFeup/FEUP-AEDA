@@ -1,17 +1,17 @@
 #include "circle.h"
 
-Circle::Circle(int score, bool state) : score(score), state(state), visit_count(0) {}
+Circle::Circle(int score, bool to_right) : score(score), to_right(to_right), visit_count(0) {}
 
 void Circle::changeState() {
-	state = !state;
+	to_right = !to_right;
 }
 
 int Circle::getScore() const {
 	return score;
 }
 
-bool Circle::getState() const {
-	return state;
+bool Circle::isToRight() const {
+	return to_right;
 }
 
 int Circle::getVisitCount() const {
