@@ -22,19 +22,15 @@ void Box::resetId() {
 	last_id = 1;
 }
 
-unsigned Box::getSize() const {
+unsigned Box::qtObjects() const {
 	return objects.size();
-}
-
-unsigned int Box::getCapacity() const {
-	return capacity;
 }
 
 bool Box::operator<(const Box &box) const {
 	return this->free_weight > box.free_weight;
 }
 
-std::string Box::print() {
+std::string Box::toString() {
 	if (objects.empty())
 		return "Box " + std::to_string(id) + " empty!\n";
 

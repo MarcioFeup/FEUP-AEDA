@@ -4,8 +4,14 @@
 
 #include <stdexcept>
 
+/**
+ * Exception that represents a machine without boxes.
+ */
 class EmptyMachineException {
   public:
+    /**
+     * The default constructor.
+     */
 	EmptyMachineException() = default;
 };
 

@@ -184,12 +184,12 @@ TEST(test, e_ConteudoBox){
     Box::resetId();
 
     Box c1(10);
-    EXPECT_EQ("Box 1 empty!\n", c1.print());
+    EXPECT_EQ("Box 1 empty!\n", c1.toString());
 
     c1.addObject( objects[0] );
     c1.addObject( objects[1] );
 
-    EXPECT_EQ("C1[ O2: 5 O1: 2 ]", c1.print());
+    EXPECT_EQ("C1[ O2: 5 O1: 2 ]", c1.toString());
 }
 
 TEST(test, f_BoxMaisObjects){
@@ -222,5 +222,5 @@ TEST(test, f_BoxMaisObjects){
 
     cx = machine.boxWithMostObjects();
     EXPECT_EQ(5, cx.getId());
-    EXPECT_EQ("C5[ O1: 2 O7: 2 O6: 4 ]", cx.print());
+    EXPECT_EQ("C5[ O1: 2 O7: 2 O6: 4 ]", cx.toString());
 }

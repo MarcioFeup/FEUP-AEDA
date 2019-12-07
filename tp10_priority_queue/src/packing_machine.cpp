@@ -116,8 +116,8 @@ Box PackingMachine::boxWithMostObjects() {
 		aux.push_back(box);
 		boxes.pop();
 
-		if (box.getSize() >= max) {
-			max = box.getSize();
+		if (box.qtObjects() >= max) {
+			max = box.qtObjects();
 			bigger.push(box);
 		}
 	}
